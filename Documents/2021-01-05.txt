@@ -1,0 +1,26 @@
+1. First I learnt what is Version Control.Using VCS we can merge all the changes into a common version and all the developers can freely changes any perticular file. 
+2. Then different types of VCS 
+like Local VCS,Centralized VCS,Distributed VCS and its importance.
+3. Then i learnt basics of Git which is widely used VCS.
+Like Git is a Distributed VCS which allows us to revert back any changes that e want and also we can track the changes which we have made.Git uses C language hich makes it faster.Then Git Repository which is used to store all Files. which can store it either local repo. or remote repo.
+4. Then I learnt How to generate SSH(Secure Shell) key which is used for file transfer.Which is generated through the public key cryptographic algo. mostly is RSA for that first we have to write ssh -keygen then if we want then assign it to name and password also.
+Then type cat ~/.ssh/id_rsa.pub it will shows the Complete SSH key copy it.
+then open Github. Go to Setting-SSHand GPG Keys-New SSH Key and Add SSH key.
+5.Then I learnt How to clone in Local Machine.Like After creating Repo. in github then copy the SSH of that repo. and in which folder we want to clone first go there and right click and select Git bash and type ,  git clone [Paste SSH Link]
+by this we can clone.
+6.Then I learnt about Branching.We can create one or more branches for any Repo.But there is one Main branch where all changes get merged back.So we have to take care if we do changes in main branch because it will reflect to all if we are working in group project.
+git branch - shows all the branch
+git branch [branch-name] - create a branch 
+git checkout -b [branch-name] origin/main - create a new branch from main
+git checkout [branch-name] - switch to that perticular branch 
+git push origin [branch-name] - push the branch to server
+git remote -v - shows the nick name of repo.
+git status - shows modified files are commited or not
+git add [filename with extention] - before commiting e have to add files
+git commit -m "Comments" - use to commit added files
+git push origin - use to push to git repo. 
+git merge --no-ff origin/[branch-name] - use to merging with main branch
+git log - list version history of branch
+git log -[no] - shows last (no.) of commit
+git log --oneline - shows commited file names
+git log --grep "message" - it shows the commited file which have perticular this "message"
