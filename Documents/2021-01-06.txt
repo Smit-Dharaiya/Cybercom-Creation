@@ -15,6 +15,6 @@ git stash clean - delete all the stash
 Right click(on Project)->Team->Share Project->Create Local path of Repo.->finish.
 Now We have to commit otherwise it will not reflect.
 Right click(on project name)->Team->Commit->Select files( which we want to commit )->write commit message->commit and push->Next(Fill up Details)->Next(select Master branch)->Finish
--It will push the files to Repo. and we can see that in thhat Repo.
+-It will push the files to Repo. and we can see that in that Repo.
 
  
