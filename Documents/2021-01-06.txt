@@ -1,0 +1,20 @@
+1.So first Today i learnt about Fork.If you want to add any files or wants to change to the repo. of other person in which we dont have access then after creating perticular file we can pull it.After that the request will be sent to the person whose repo is that.After that person wants to add then he/she can accept the request and it will be pushed to that branch.He/she can also reject the reqest.
+2.We can restore some files which we have accidentally staged some files that we dont want to commit by this command,
+git restore [file_name]
+git restore .
+3.If we want to undo our last Push than we can do it by 
+git reset --hard HEAD~1 
+4.Then i learnt diff command,If we write "git diff" then it will show the uncommited changes since last commit.If we write "diff branch2...branch1" it show the diff of what is in branchh1 that is not in branch2.
+6.I Also learnt about stash command.If we do changes to any file and dont want to commit then by using this command we can store it locally.We can retrive it when we want.
+git stash save "Comment"
+git stash list - shows the list
+git stash apply [name of stash]  - to commit
+git stash drop [name of stash] - to delete stash
+git stash clean - delete all the stash
+5.Then i also learnt how to push any project to github repo using Eclipse.For that after creating repo follow the following steps ,
+Right click(on Project)->Team->Share Project->Create Local path of Repo.->finish.
+Now We have to commit otherwise it will not reflect.
+Right click(on project name)->Team->Commit->Select files( which we want to commit )->write commit message->commit and push->Next(Fill up Details)->Next(select Master branch)->Finish
+-It will push the files to Repo. and we can see that in thhat Repo.
+
+ 
