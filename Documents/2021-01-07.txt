@@ -1,0 +1,6 @@
+1.So First I revised all the concept which i have done starting from the training.Then i created a clone(copy) of the main(Cybercom Creation) Repo. and perform basic tasks like Uploading files using add,commit and push commands.
+2.I also performed log commands and perform operations on different branches.
+3.I also tried to solve some of the doubts which were mentioned in the sheets.
+4.I learnt about the squish command.
+5.I also learnt basics about the types of Git Reset -  Soft,Hard and Mixed.
+6.I also Checked the conflict problem and solved it.
