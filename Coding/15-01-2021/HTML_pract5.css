@@ -2,6 +2,7 @@
 {
 	height: 400px;
 	width: 600px;
+	border-collapse: collapse;
 }
 .record td
 {
@@ -30,30 +31,32 @@
 }
 
 
-.spanning td {
+.rspan td {
   border-bottom: 1px solid transparent;
 }
-
-tbody .spanning td:first-child {
-  border-bottom: 1px solid transparent;
+ul
+{
+	text-align: left;
+	padding: 15px;
 }
 
-.spanned td {
-  border-top: 1px solid transparent;
-  padding: 5px;
-  width: 25%;
-  vertical-align: top;
+tbody .rspan td:first-child {
+  border-bottom: 1px solid black;
 }
 
-tbody .spanned td:first-child {
-  background-color: white;
+.rspan td {
+  border-top: 1px solid white;
+}
+
+tbody .bottom td:nth-child(1) {
+  background-color: lightyellow;
   font-weight: normal;
 }
 
-tbody .spanned td:nth-child(2) {
+tbody .bottom td:nth-child(2) {
   background-color: lightpink;
 }
 
-tbody .spanned td:last-child {
+tbody .bottom td:nth-child(3) {
   background-color: yellow;
 }
