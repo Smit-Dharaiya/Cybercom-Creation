@@ -1,0 +1,59 @@
+.record 
+{
+	height: 400px;
+	width: 600px;
+}
+.record td
+{
+	border : 1px solid black;
+	padding: 3px;
+}
+.record thead
+{
+	text-align: center;
+	font-weight: bold;	
+	background-color: lightgreen;
+}
+
+.record tbody td:nth-child(1)
+{
+	background-color: lightblue;
+	font-weight: bold;
+}
+.record tbody td:nth-child(3)
+{
+	background-color: lightpink;
+}
+.record tbody td:nth-child(4)
+{
+	background-color: yellow;
+}
+
+
+.spanning td {
+  border-bottom: 1px solid transparent;
+}
+
+tbody .spanning td:first-child {
+  border-bottom: 1px solid transparent;
+}
+
+.spanned td {
+  border-top: 1px solid transparent;
+  padding: 5px;
+  width: 25%;
+  vertical-align: top;
+}
+
+tbody .spanned td:first-child {
+  background-color: white;
+  font-weight: normal;
+}
+
+tbody .spanned td:nth-child(2) {
+  background-color: lightpink;
+}
+
+tbody .spanned td:last-child {
+  background-color: yellow;
+}
