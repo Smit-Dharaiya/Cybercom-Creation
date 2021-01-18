@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="p6.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
+</head>
+<body>
+<center>
+<div class="main">
+	<div class="image">
+		<center><span class="caption"><p>Contact Us</p></center></span>
+	</div>
+	<div class="form">
+	<form>
+		<div class="name">
+		 <i class="fa fa-user"></i><input type="text" name="" id="name" placeholder="Full Name" required>
+		</div>
+
+		<div class="email">
+		 <i class="fa fa-envelope"></i><input type="email" name="" placeholder="Eg. example@email.com" required>
+		</div>
+
+		<div class="number">
+		 <i class="fa fa-mobile"></i><input type="number" name="" placeholder="Eg.+1800 000000" required>
+		</div>
+
+		<div class="comment">
+		 <i class="fa fa-comment"></i><textarea type="comments" cols="10" rows="20" name="" placeholder="Your comments..." required></textarea> 
+		</div>
+
+		<input type="submit" value="Submit" class="button" onclick="message()">
+
+		<script type="text/javascript">
+			function message()
+			{
+			alert("Your request has been submitted !");
+			}
+		</script>
+
+	</form>
+	</div>
+</div>
+</center>
+</body>
+</html>
