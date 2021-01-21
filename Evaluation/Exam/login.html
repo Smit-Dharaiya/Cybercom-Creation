@@ -20,21 +20,21 @@
   <div class="container">
     <p class="or"><b> OR </b></p>
     <br>
-     <button onclick="changeForm()" value="Sign-Up" id="register">Register Now</button>
+     <button type="button" onclick="changeForm()" value="Sign-Up" id="register">Register Now</button>
   </div>
 
 </form>
 </div>
 </center>
-<script type="text/javascript" src="login.js"></script>
 <script>
 
   function changeForm()
   {
     window.location="Registration.html";
   }
+</script>
 
-
+<script type="text/javascript">
 function Login(){
     
     var x=document.getElementById("email").value;
@@ -44,7 +44,11 @@ function Login(){
 
     if(x === data[0].email && y === data[0].password){
         window.location="Dashboard.html";
-    }else{
+    }else if(x =='' || y =='')
+    {
+      alert("Enter Details");
+    }
+    else{
         alert("Not Valid");
     }
 
