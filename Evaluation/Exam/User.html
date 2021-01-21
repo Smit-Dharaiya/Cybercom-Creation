@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="collapse navbar-collapse nav-item " id="collapsibleNavbar">
+    <ul class="navbar-nav main-ul">
+      <li class="nav-item ">
+        <a class="nav-link " href="">Hello , [name] </a>
+      </li>
+      <li>
+      	<a class="nav-link " href="">Dashboard </a>
+      </li>
+      <li>
+      	<a class="nav-link " href="user.html">Users</a>
+      </li>
+      <li>
+      	<a class="nav-link " href="" role="button">Login Session</a>
+      </li>
+      <li>
+      	<a class="nav-link " href="" role="button">Logout</a>
+      </li>
+    </ul>
+    <hr>
+  </div> 
+
+       <div class="content pt-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="name">Username</label>
+                      <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelpId" placeholder="Username">
+                     </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email"
+                          class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Email" required/>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password"
+                          class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Password" required/>
+                     </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="dob">Date Of Birth</label>
+                        <input type="date" class="form-control" name="dob" id="dob" aria-describedby="emailHelpId" placeholder="Username">
+                      </div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="button" onclick="addUser()" class="btn btn-warning">Add User</button>    
+            </div>   
+       </div>
+
+
+       <div class="jumbotron mt-5 text-center">    
+            <table>
+              <thead>
+                <tr>
+                  <td >Name</th>
+                  <td>Email</th>
+                  <td>Password</th>
+                  <td>Birthdate</th>
+                  <td>Age</th>
+                  <td>Actions</th>
+                </tr>
+              </thead>
+              <tbody id = "userTable">
+           
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="User.js"></script>
+</body>
+</html>
