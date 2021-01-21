@@ -15,38 +15,41 @@
     <input type="email" placeholder="Enter Email" name="email" id="email" required>
     <input type="password" placeholder="Enter Password" name="password" id="password" required>
     <br>
-    <button type="button" name="submit"  onclick="onLogin()">Login</button>
+    <button type="button" name="submit" onclick="Login()">Login</button>
   </div>
   <div class="container">
     <p class="or"><b> OR </b></p>
     <br>
-     <button onclick="changeForm()" value="Sign-Up">Register Now</button>
+     <button onclick="changeForm()" value="Sign-Up" id="register">Register Now</button>
   </div>
 
 </form>
 </div>
 </center>
-
+<script type="text/javascript" src="login.js"></script>
 <script>
 
   function changeForm()
   {
     window.location="Registration.html";
   }
-  function onLogin(){
+
+
+function Login(){
+    
     var x=document.getElementById("email").value;
     var y=document.getElementById("password").value;
-    var person = {
-    email : semail,
-    password : password
-  };
-    if(x!="" && y!=""){
-    window.location= "Dashboard.html";
-   }
-    else{
-      alert("Enter Details");
-     }
-  }
+
+    var data = JSON.parse(localStorage.getItem('admin'));
+
+    if(x === data[0].email && y === data[0].password){
+        window.location="Dashboard.html";
+    }else{
+        alert("Not Valid");
+    }
+
+}
+
 </script>
 </body>
 </html>
