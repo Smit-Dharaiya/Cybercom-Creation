@@ -41,7 +41,7 @@ function Login(){
     var y=document.getElementById("password").value;
 
     var data = JSON.parse(localStorage.getItem('admin'));
-
+    var data2 = JSON.parse(localStorage.getItem('userArray'));
     if(x === data[0].email && y === data[0].password){
         window.location="Dashboard.html";
     }else if(x =='' || y =='')
