@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="login.css">
+
+</head>
+<body>
+
+<center>
+<div id="admin-form">
+ <h1 id="Heading">Admin Login </h1>
+<form action="">
+  <div class="container">
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    <br>
+    <button type="button" name="submit"  onclick="onLogin()">Login</button>
+  </div>
+  <div class="container">
+    <p class="or"><b> OR </b></p>
+    <br>
+     <button onclick="changeForm()" value="Sign-Up">Register Now</button>
+  </div>
+
+</form>
+</div>
+</center>
+
+<script>
+
+  function changeForm()
+  {
+    window.location="Registeration.html";
+  }
+  function onLogin(){
+    var x=document.getElementById("email").value;
+    var y=document.getElementById("password").value;
+    var person = {
+    email : semail,
+    password : password
+  };
+    if(x!="" && y!=""){
+    window.location= "Dashboard.html";
+   }
+    else{
+      alert("Enter Details");
+     }
+  }
+</script>
+</body>
+</html>
