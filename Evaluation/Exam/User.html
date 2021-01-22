@@ -11,36 +11,42 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<style type="text/css">
+	 thead tr td {
+		padding: auto;
+		margin: auto;
+	}
+</style>
+<style>
+    body {
+        margin: 0;
+    }
+    .header {
+        background-color: maroon;
+        padding: 5px;
+    }
+    li , p #aname {
+        list-style: none;
+        display: inline;
+        padding: 10px 30px;
+    }
+    li>a , p {
+        font-size: 24px;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="height: 100px;">
-  <!-- Brand -->
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="header">
+    	<p id="aname"></p>
+        <ul>
+            <li id="aname"><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="User.html">Users</a></li>
+            <li><a href="UserSession.html">Login Session</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+    </div>
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse nav-item " id="collapsibleNavbar">
-    <ul class="navbar-nav main-ul">
-      <li class="nav-item ">
-        <a class="nav-link " href="">Hello , [name] </a>
-      </li>
-      <li>
-      	<a class="nav-link " href="">Dashboard </a>
-      </li>
-      <li>
-      	<a class="nav-link " href="user.html">Users</a>
-      </li>
-      <li>
-      	<a class="nav-link " href="" role="button">Login Session</a>
-      </li>
-      <li>
-      	<a class="nav-link " href="" role="button">Logout</a>
-      </li>
-    </ul>
-    <hr>
-  </div> 
-</nav>
        <div class="content pt-5">
             <div class="row">
                 <div class="col-md-3">
@@ -67,7 +73,9 @@
                 </div>
             </div>
             <div class="form-group text-center">
-                <button type="button" onclick="addUser()" class="btn btn-warning">Add User</button>    
+                <button type="button" onclick="addUser()" class="btn btn-warning" id="add-user">Add User</button>
+                <button type="button" onclick="addUser()" class="btn btn-warning" id="update-user">Update User</button> 
+
             </div>   
        </div>
 
@@ -76,7 +84,7 @@
             <table>
               <thead>
                 <tr>
-                  <td >Name</th>
+                  <td>Name</th>
                   <td>Email</th>
                   <td>Password</th>
                   <td>Birthdate</th>

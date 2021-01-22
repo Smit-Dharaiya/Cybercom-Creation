@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+    .header {
+        background-color: maroon;
+        padding: 5px;
+    }
+    li , p #aname {
+        list-style: none;
+        display: inline;
+        padding: 10px 30px;
+    }
+    li a , p {
+        font-size: 24px;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+<body>
+	    <div class="header">
+    	<p id="aname"></p>
+        <ul>
+            <li id="aname"><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="User.html">Users</a></li>
+            <li><a href="#">Login Session</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <div>
+
+            <div>
+                <h1>Login Sessions</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Login Date Time</td>
+                            <td>Logout Date Time</td>
+                        </tr>
+                    </thead>
+                    <tbody id="LoginSessionTable">
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+<script type="text/javascript" src="UserSession.js"></script>
+</body>
+</html>

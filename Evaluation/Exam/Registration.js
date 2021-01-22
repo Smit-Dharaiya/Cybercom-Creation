@@ -1,7 +1,8 @@
 var adminArray = [];
+var admin = {};
 
 if(localStorage.getItem('admin')){
-        adminArrayData = JSON.parse(localStorage.getItem('admin'));
+        adminArray = JSON.parse(localStorage.getItem('admin'));
     }
 function registration()
 {
@@ -23,12 +24,14 @@ console.log(admin);
 if(localStorage.getItem('admin')){
 	adminArray.push(admin);
 	localStorage.setItem("admin",JSON.stringify(adminArray));
+	window.location = 'login.html';
 }
 
 else
-{
+{	
 	adminArray.push(admin);
     localStorage.setItem("admin",JSON.stringify(adminArray));
+    window.location = 'login.html';
 }
 
 }

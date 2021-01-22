@@ -4,7 +4,10 @@ console.log(userArray);
 
 window.onload = () => {
     createTable("userTable");
+    document.getElementById('update-user').style.visibility = "hidden";
 }
+
+
 
 function createTable(tableId) {
     console.log("table function");
@@ -23,7 +26,7 @@ function createTable(tableId) {
         age = row.insertCell(4);
         action = row.insertCell(5);
 
-        name.innerHTML = userArray[i].name;
+        name.innerHTML = userArray[i].name + " ";
         email.innerHTML = userArray[i].email;
         password.innerHTML = userArray[i].password;
         dob.innerHTML = userArray[i].dob;
@@ -40,6 +43,7 @@ if (localStorage.getItem('userArray')) {
 }
 
 function addUser() {
+
     var name = document.getElementById('name').value;
     var password = document.getElementById('password').value;
     var dob = document.getElementById('dob').value;
@@ -59,13 +63,46 @@ var user = {
         console.log(userArray);
         userStorage.push(user);
         localStorage.setItem("userArray", JSON.stringify(userStorage));
+        alert("User Added : Refresh the page to see");
     }
     else {
         userStorage.push(user);
         localStorage.setItem("userArray", JSON.stringify(userStorage));
+        alert("User Added : Refresh the page to see");   
     }
 
 }
+
+function deleteUser(id)
+{   
+    var no = document.getElementById(id).parentElement.parentNode.rowIndex;
+    document.getElementById("userTable").deleteRow(no - 1);
+    userArray.splice(no - 1, 1);
+    localStorage.setItem('userArray', JSON.stringify(userArray));
+
+}
+
+function editUser(id) {
+    //document.getElementById('add-user').id = 'update-user';
+    document.getElementById('update-user').style.visibility = "visible";
+    document.getElementById('add-user').style.visibility = "hidden";
+    var no = document.getElementById(id).parentElement.parentNode.rowIndex;
+
+    document.getElementById('name').value = userArray[no - 1].name;
+    document.getElementById('email').value = userArray[no - 1].email;
+    document.getElementById('password').value = userArray[no - 1].password;
+    document.getElementById('dob').value = userArray[no - 1].dob;
+
+    document.getElementById('update-user').onclick = () => {
+        userArray[no - 1].name = document.getElementById('name').value;
+        userArray[no - 1].email = document.getElementById('email').value;
+        userArray[no - 1].password = document.getElementById('password').value;
+        userArray[no - 1].dob = document.getElementById('dob').value;
+        localStorage.setItem('userArray', JSON.stringify(userArray));
+        alert("Successfully Updated reload the page");
+    }
+}
+
 
 
 
