@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="p7.css">
+	<title></title>
+</head>
+<style type="text/css">
+	.main{
+		width: 60%;
+		margin: auto;
+	}
+</style>
+<body>
+
+	<div class="main">
+		 <fieldset>
+		 	<legend>Your Address</legend>
+		 <table>
+                <tr>
+                    <td>First Name</td>
+                    <td> <input class="input" type="text"/> </td>
+                </tr>
+
+                <tr>
+                    <td>Last Name</td>
+                    <td> <input class="input" type="text"/> </td>
+                </tr>
+                
+                <tr>
+                    <td>Street</td> 
+                    <td> <input class="input" type="text"/> </td>
+                </tr>
+
+                <tr>
+                    <td>City</td> 
+                    <td><input class="input" type="text"/> </td> 
+                </tr>
+          </table>
+          </fieldset>
+          <br>
+
+          <fieldset>
+          	<legend>Additional Details</legend>
+          <table><tr>
+                    <td>Biography</td> 
+                    <td> <textarea rows="5"> </textarea> </td>
+                </tr>
+
+                <tr>
+                	<td>Image</td>
+                	<td> <input type="file" name=""> 
+                	</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                	<td>Age Group</td>
+                	<td>
+                		<select>
+                			<option value="0-9 Years">0-9 Years</option>
+                			<option value="9-18 Years">9-18 Years</option>
+                			<option value="18-50 Years">18-50 Years</option>
+                			<option value="Above 50 Years">Above 50 Years</option>
+                		</select>
+                	</td>
+                </tr>
+          </table>
+          </fieldset>
+          <br>
+          <fieldset>
+          	<legend>Interests</legend>
+          <table>
+          	<tr> 
+          		<td> Hobbies </td> 
+          		<td>
+          			<textarea rows="4">Playing Soccer Dancing      Gardening     Watching Movies</textarea>
+          		</td>
+          	</tr>
+          	<tr>
+          		<td>Favourite Car ?</td>
+          		<td>
+                		<select id="car">
+                			<option value="Volvo">Volvo</option>
+                			<option value="Audi">Audi</option>
+                			<option value="RR">RR</option>
+                			<option value="Ferrari">Ferrari</option>
+                		</select>
+                </td>
+          	</tr>
+          	<tr> 
+          		<td> Favourite Public Transport ? </td> 
+          		<td>
+          			<textarea rows="5">Ground            Train            Dancing            Bus              Water</textarea>
+          		</td>
+          	</tr>
+          </table>
+          </fieldset><br><br>
+          <center>
+          <input type="submit" name="" value="submit" onclick="Success()">
+          <input type="submit" name="" value="reset">
+    	  </center>
+    </div>
+<script type="text/javascript">
+	function Success()
+	{
+		window.location = "Success.html";
+	}
+</script>
+</body>
+</html>
