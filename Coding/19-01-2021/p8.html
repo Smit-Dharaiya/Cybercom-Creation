@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="p8.css">
+</head>
+<body>
+    <div class="main"> 
+    <form action="Infornamtion.php" method="GET" >
+        <b><label>Personal Infornamtion</label><b><br><br>
+        <div class="div1">
+        <label>First Name </label>
+        <input type="text" name="fname" id="fname" required><br>
+        </div>
+        <div class="div1">
+        <label>Last Name </label>
+        <input type="text" name="lname" id="lname">
+        </div>
+        <div class="div1">
+        <label>Date of Birth </label>
+        <input type="Date" name="date" id="date" required>
+        </div>
+        <div class="div1">
+                    <label>Gender</label>
+                        <select name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value=" " selected>Choose a gender</option>
+                        </select>
+        </div>
+
+        <br><br><label>
+            Acount Infornamtion
+        </label><br><br>
+        <div class="div1">
+        <label>Email </label>
+        <input type="email" name="email" id="email" required><br>
+        </div>
+
+        <div class="div1">
+        <label>Re-type Email </label>
+        <input type="email" name="remail" id="remail">
+        </div>
+
+        <div class="div1">
+        <label>Password</label>
+        <input type="text" name="pswd" id="pswd" required>
+        </div>
+
+        <div class="div1">
+        <label>Re-type Password</label>
+        <input type="text" name="pswd" id="pswd">
+        </div>
+
+        <div class="div1">
+        <label>Security Question</label>
+                <select name="gender">
+                            <option value="male">which was your 1st school</option>
+                            <option value="female">what is your nickname</option>
+                            <option value=" " selected>Choose a security question</option>
+                </select>
+        </div>
+
+        <div class="div1">
+        <label>Security Answer</label>
+        <input type="text" name="answer" id="answer">        
+        </div>
+
+        <br><br><label>
+            Contact Infornamtion
+        </label><br><br>
+
+        <div class="div1">
+        <label>Address</label>
+        <input type="text" name="address" id="address">
+        </div>
+
+        <div class="div1">
+        <label>City</label>
+        <input type="text" name="city" id="city">
+        </div>        
+
+        <div class="div1">
+                    <label>State</label>
+                        <select name="city">
+                            <option value="gujarat">Gujarat</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="other">Other</option>
+                            <option value=" " selected>Choose a state</option>
+                        </select>
+        </div>
+
+        <div class="div1">
+        <label>Zip-Code</label>
+        <input type="number" name="code" id="code" minlength="6" minlength="6">
+        </div>
+
+        <div class="div1">
+        <label>Phone</label>
+        <input type="tel" name="phone" id="phone" required>    
+        </div>
+    </form>
+    <div class="div2">
+    <input type="submit" name="submit" value="submit">
+    <input type="reset" name="reset" value="Reset">
+    </div>
+    </div>
+</body>
+</html>

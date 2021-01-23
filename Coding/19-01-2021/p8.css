@@ -1,0 +1,30 @@
+.main{
+	border: 1px solid black;
+	height: 600px;
+	margin: auto;
+    width: 40%;
+}
+
+.div1{
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 2px;
+	width: 100%;
+	display: inline-block;
+}
+
+label {
+  width: 30%;
+  display: inline-block;
+  text-align: right;
+  }
+
+input{
+width: auto;
+}
+
+.div2{
+	margin-top:40px;
+	margin-left: 300px;
+}
