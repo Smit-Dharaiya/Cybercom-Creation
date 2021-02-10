@@ -1,0 +1,66 @@
+h1
+{
+	position: relative;
+	right: 10px;
+	margin-top: 80px;
+}
+form 
+{
+  width: 350px;
+  border: 3px solid black;
+  position: relative;
+  background-color:lightblue;
+  border:1px solid black;
+}
+input{
+  padding: 12px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid black;
+  width: 100%;
+}
+
+button {
+  background-color: green;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  cursor: pointer;
+  width: 100%;
+}
+
+.or
+{
+  color: black;
+}
+
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+.lgn{
+  position: relative;
+  bottom: 10px;
+}
+
+#login-form
+{
+  position: relative;
+  top:50px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  color: black;
+}
+
+button:hover{
+  color: black;
+}

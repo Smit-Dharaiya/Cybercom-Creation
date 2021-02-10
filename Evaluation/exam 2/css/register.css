@@ -1,0 +1,42 @@
+#registration-box {
+    border: 1px solid #000;
+    position: absolute; 
+    top: 20%;
+    left: 38%;
+    width: 400px;
+}
+#registration-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#registration-box form {
+    padding: 40px;
+}
+#registration-box form>div {
+    margin-bottom: 10px;
+} 
+#registration-box form button {
+    width: 100%;
+    border-radius: 5px;
+    background-color: orange;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: black;
+}
+
+button:hover{
+    color: black;
+}
+
+select{
+    /*width: 300px;*/
+    border: 1px solid silver;
+    color: black; 
+}
