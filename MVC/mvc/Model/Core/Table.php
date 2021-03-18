@@ -4,7 +4,8 @@ namespace Model\Core;
 
 \Mage::loadFileByClassName("Model\Core\Adapter");
 
-class Table {
+class Table
+{
 
     protected $adapter = null;
     protected $primaryKey = null;
@@ -19,13 +20,14 @@ class Table {
 
     public function getAdapter()
     {
-        if(!$this->adapter){
+        if (!$this->adapter) {
             $this->setAdapter();
         }
         return $this->adapter;
     }
 
-    public function getPrimaryKey(){
+    public function getPrimaryKey()
+    {
         return $this->primaryKey;
     }
 
@@ -35,8 +37,9 @@ class Table {
         return $this;
     }
 
-    public function 
-    getTableName(){
+    public function
+    getTableName()
+    {
         return $this->tableName;
     }
 
@@ -46,12 +49,14 @@ class Table {
         return $this;
     }
 
-    public function setData(array $data){  
-        $this->data = array_merge($this->data, $data); 
+    public function setData(array $data)
+    {
+        $this->data = array_merge($this->data, $data);
         return $this;
     }
-    
-    public function getData(){   
+
+    public function getData()
+    {
         return $this->data;
     }
 
@@ -61,93 +66,30 @@ class Table {
         return $this;
     }
 
-    public function __set($key, $value){
+    public function __set($key, $value)
+    {
         $this->data[$key] = $value;
         return $this;
     }
-    
-    public function __get($key){
-        if(!array_key_exists($key, $this->data)){
+
+    public function __get($key)
+    {
+        if (!array_key_exists($key, $this->data)) {
             return null;
         }
         return $this->data[$key];
-    }    
+    }
 
-    // public function save($id = null){
-
-    //      if (!array_key_exists($this->getPrimaryKey(), $this->getData())) {
-    //         $keys = '`'. implode("`,`", array_keys($this->getData())) . '`' ;
-    //         $values = "'" . implode("','", array_values($this->getData())) . "'";
-    //         $query = "INSERT INTO `{$this->getTableName()}` ({$keys}) VALUES($values)";
-    //         $recordId = $this->getAdapter()->insert($query);
-    //         if (!$recordId) {
-    //             return false;
-    //         }
-    //     }
-    //     for($i=0;$i<count($this->data);$i++){
-    //     unset($this->data[$i]);
-    //     }
-    //     foreach($this->data as $key=>$value)
-    //     {
-    //         if(is_null($value) || $value == '')
-    //             unset($this->data[$key]);
-    //     }
-    //     $sets = "";
-    //     foreach ($this->getData() as $key => $value) {
-    //         $sets = $sets .'`' . $key .'`'. "='" . $value."',";
-    //     }
-    //     $sets = rtrim($sets, ","); 
-    //     $query = "UPDATE `{$this->getTableName()}` SET {$sets} WHERE `{$this->getPrimaryKey()}`='{$id}'";
-    //     $recordId = $this->getAdapter()->update($query);
-    //     if (!$recordId) {
-    //         return false;
-    //     }
-    //     return $recordId;         
-    // }
-
-    //     public function save(){
-
-    //      if (!array_key_exists($this->getPrimaryKey(), $this->getData())) {
-    //         $keys = '`'. implode("`,`", array_keys($this->getData())) . '`' ;
-    //         $values = "'" . implode("','", array_values($this->getData())) . "'";
-    //         $query = "INSERT INTO `{$this->getTableName()}` ({$keys}) VALUES($values)";
-    //         $recordId = $this->getAdapter()->insert($query);
-    //         if (!$recordId) {
-    //             return false;
-    //         }
-    //     }
-    //     for($i=0;$i<count($this->data);$i++){
-    //     unset($this->data[$i]);
-    //     }
-    //     foreach($this->data as $key=>$value)
-    //     {
-    //         if(is_null($value) || $value == '')
-    //             unset($this->data[$key]);
-    //     }
-    //     $sets = "";
-    //     foreach ($this->getData() as $key => $value) {
-    //         $sets = $sets .'`' . $key .'`'. "='" . $value."',";
-    //     }
-    //     $sets = rtrim($sets, ","); 
-    //     $query = "UPDATE `{$this->getTableName()}` SET {$sets} WHERE `{$this->getPrimaryKey()}`='{$id}'";
-    //     $recordId = $this->getAdapter()->update($query);
-    //     if (!$recordId) {
-    //         return false;
-    //     }
-    //     return $recordId;         
-    // // }
-
-    public function save(){
+    public function save()
+    {
         date_default_timezone_set("Asia/Calcutta");
-        if(!array_key_exists($this->getPrimaryKey(), $this->getData())){
-            $query = "INSERT INTO `{$this->getTableName()}` (`".implode("`, `",array_keys($this->getData()))."`) VALUES ('".implode("', '",$this->getData())."')";
-            // echo $query;
-            // die();
+        if (!array_key_exists($this->getPrimaryKey(), $this->getData())) {
+            $query = "INSERT INTO `{$this->getTableName()}` (`" . implode("`, `", array_keys($this->getData())) . "`) VALUES ('" . implode("', '", $this->getData()) . "')";
             $id =  $this->getAdapter()->insert($query);
             $this->load($id);
             return true;
         }
-        for($i=0;$i<count($this->data);$i++){
+        for ($i = 0; $i < count($this->data); $i++) {
             unset($this->data[$i]);
         }
         // foreach($this->data as $key=>$value) {
@@ -156,17 +98,18 @@ class Table {
         // }
         $strData = null;
         foreach ($this->getData() as $key => $value) {
-            if($key != $this->getPrimaryKey()){
+            if ($key != $this->getPrimaryKey()) {
                 $strData .= "`{$key}` = '{$value}', ";
             }
         }
         $strData = substr_replace($strData, "", -2);
         $id = $this->getData()[$this->getPrimaryKey()];
-        $query = "UPDATE `{$this->getTableName()}` SET {$strData} WHERE `{$this->getPrimaryKey()}` = '{$id}'"; 
+        $query = "UPDATE `{$this->getTableName()}` SET {$strData} WHERE `{$this->getPrimaryKey()}` = '{$id}'";
         return $this->getAdapter()->update($query);
     }
 
-    public function load($id){
+    public function load($id)
+    {
         $id = (int)$id;
         $query = "SELECT * FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}` = '$id' ";
         return $this->fetchRow($query);
@@ -175,27 +118,27 @@ class Table {
     public function fetchRow($query)
     {
         $row = $this->getAdapter()->fetchRow($query);
-        if(!$row){
+        if (!$row) {
             return false;
         }
         $this->data = $row;
         return $this;
     }
 
-    public function fetchAll($query=null)
+    public function fetchAll($query = null)
     {
-        if(!$query){
-        $query = "SELECT * FROM `{$this->getTableName()}`";
+        if (!$query) {
+            $query = "SELECT * FROM `{$this->getTableName()}`";
         }
         $rows = $this->getAdapter()->fetchAll($query);
         if (!$rows) {
-            return $this;
+            return false;
         }
         foreach ($rows as $key => &$value) {
             $key = new $this;
             $value = $key->setData($value);
         }
-        $collectionClassName = get_class($this).'_Collection';
+        $collectionClassName = get_class($this) . '\Collection';
         $collection = \Mage::getModel($collectionClassName);
         $collection->setData($rows);
         unset($rows);
@@ -224,6 +167,3 @@ class Table {
         return $this->getAdapter()->delete($query);
     }
 }
-
-?>
- 

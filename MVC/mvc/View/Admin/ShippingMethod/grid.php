@@ -23,7 +23,7 @@ $result=$this->getShippingMethods();
               <tbody>
              	    <strong>
                     <?php
-                    foreach ($result as $row) {
+                    foreach ($result->getData() as $row) {
                     ?>   </strong>
                       <tr>
                           <td><?php echo $row->id ?></td>

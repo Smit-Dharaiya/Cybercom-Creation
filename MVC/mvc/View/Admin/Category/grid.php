@@ -27,7 +27,7 @@ $result=$this->getCategories();
                         </tr>
                     </center></strong>
                       <?php else: ?>  
-                    <?php foreach ($result as $row): ?>
+                    <?php foreach ($result->getData() as $row): ?>
                       <tr>
                           <td><?php echo $row->id ;?></td>
                           <td><?php echo $this->getName($row) ;?></td>

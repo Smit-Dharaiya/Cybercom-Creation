@@ -24,4 +24,3 @@ class Admin extends Core\Table{
     }
 
 }
-?>

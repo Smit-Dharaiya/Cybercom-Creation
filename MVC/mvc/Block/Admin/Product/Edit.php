@@ -2,72 +2,30 @@
 
 namespace Block\Admin\Product;
 
-\Mage::loadFileByClassName('Block\Admin\Core\Template');
+\Mage::loadFileByClassName('Block\Core\Edit');
 
-class Edit extends \Block\Admin\Core\Template{
-
-	protected $product = NULL;
-
-	function __construct()
+class Edit extends \Block\Core\Edit
+{
+	public function __construct()
 	{
-		parent:: __construct();
-		$this->setTemplate("View/Admin/Product/edit.php");
+		parent::__construct();
+		$this->setTabClass(\Mage::getBlock('Block\Admin\Product\Edit\Tabs'));
 	}
-	
-	public function getTabContent()
+	public function getTitle()
 	{
-		$tabBlock = \Mage::getBlock("Block\Admin\Product\Edit\Tabs");
-		$tabs= $tabBlock->getTabs();
-		$tab=$this->getRequest()->getGet('tab',$tabBlock->getDefaultTab());
-		if(!array_key_exists($tab, $tabs)) {
-			return null;
+		if ($this->getTableRow()->id) {
+			echo 'Update Product Details';
+		} else {
+			echo 'Add Product Details';
 		}
-		$blockClassName = $tabs[$tab]['block'];
-		$block =\Mage::getBlock($blockClassName);
-		return $block;
 	}
 
-	public function setProduct($product = NULL)
+	public function getButton()
 	{
-		if($product){
-			$this->product = $product;
-			return $this;
-		}
-		$product = \Mage::getModel("Model\Product");
-		if($id = $this->getController()->getRequest()->getGet('id')){
-   			$product = $product->load($id);
-     	}
-		$this->product = $product;
-		return $this->product;
-	} 
-
-	public function getProduct()
-	{
-		if(!$this->product){
-			$this->setProduct();
-		}
-		return $this->product;
-    }
-
-    public function getTitle()
-    {
-    	if($this->getProduct()->id){
-			echo 'Update Product';
-		}
-		else
-		{echo 'Add Product';}
-    }
-
-    public function getButton()
-	{
-		if($this->getProduct()->id){
+		if ($this->getTableRow()->id) {
 			echo 'Update';
-		}
-		else{
-		echo 'Add';
+		} else {
+			echo 'Add';
 		}
 	}
-
 }
-
-?>

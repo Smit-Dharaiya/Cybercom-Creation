@@ -2,9 +2,9 @@
 
 namespace Block\Admin\Product;
 
-\Mage::loadFileByClassName("Block\Admin\Core\Template");
+\Mage::loadFileByClassName("Block\Core\Template");
 
-class Grid extends \Block\Admin\Core\Template
+class Grid extends \Block\Core\Template
 {
 	protected $products = [];
 
@@ -17,7 +17,7 @@ class Grid extends \Block\Admin\Core\Template
 	{
 		if(!$products){
 			$product = \Mage::getModel("Model\Product");
-            $products = $product->fetchAll()->getData();
+            $products = $product->fetchAll();
 		}
 		$this->products=$products;
 		return $this;
@@ -38,5 +38,3 @@ class Grid extends \Block\Admin\Core\Template
 	}
 
 }
-
-?>

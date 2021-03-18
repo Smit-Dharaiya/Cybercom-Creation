@@ -2,72 +2,32 @@
 
 namespace Block\Admin\ShippingMethod;
 
-\Mage::loadFileByClassName('Block\Admin\Core\Template');
+\Mage::loadFileByClassName('Block\Core\Edit');
 
-class Edit extends \Block\Admin\Core\Template{
-
-	protected $shippingMethod = NULL;
+class Edit extends \Block\Core\Edit
+{
 
 	function __construct()
 	{
-		parent:: __construct();
-		$this->setTemplate("View/Admin/ShippingMethod/edit.php");
-	}
-	
-	public function getTabContent()
-	{
-		$tabBlock = \Mage::getBlock("Block\Admin\ShippingMethod\Edit\Tabs");
-		$tabs= $tabBlock->getTabs();
-		$tab=$this->getRequest()->getGet('tab',$tabBlock->getDefaultTab());
-		if(!array_key_exists($tab, $tabs)) {
-			return null;
-		}
-		$blockClassName = $tabs[$tab]['block'];
-		$block =\Mage::getBlock($blockClassName);
-		return $block;
+		parent::__construct();
+		$this->setTabClass(\Mage::getBlock('Block\Admin\ShippingMethod\Edit\Tabs'));
 	}
 
-	public function setShippingMethod($shippingMethod = NULL)
+	public function getTitle()
 	{
-		if($shippingMethod){
-			$this->shippingMethod = $shippingMethod;
-			return $this;
-		}
-		$shippingMethod = \Mage::getModel("Model\ShippingMethod");
-		if($id = $this->getController()->getRequest()->getGet('id')){
-   			$shippingMethod = $shippingMethod->load($id);
-     	}
-		$this->shippingMethod = $shippingMethod;
-		return $this->shippingMethod;
-	} 
-
-	public function getShippingMethod()
-	{
-		if(!$this->shippingMethod){
-			$this->setShippingMethod();
-		}
-		return $this->shippingMethod;
-    }
-
-    public function getTitle()
-    {
-    	if($this->getShippingMethod()->id){
+		if ($this->getTableRow()->id) {
 			echo 'Update ShippingMethod';
-		}
-		else
-		{echo 'Add ShippingMethod';}
-    }
-
-    public function getButton()
-	{
-		if($this->getShippingMethod()->id){
-			echo 'Update';
-		}
-		else{
-		echo 'Add';
+		} else {
+			echo 'Add ShippingMethod';
 		}
 	}
 
+	public function getButton()
+	{
+		if ($this->getTableRow()->id) {
+			echo 'Update';
+		} else {
+			echo 'Add';
+		}
+	}
 }
-
-?>

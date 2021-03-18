@@ -8,9 +8,6 @@ class CustomerGroup extends Core\Table{
  
  const STATUS_ENABLED = 1;
  const STATUS_DISABLED = 0;
- const WHOLESELLER = 1;
- const RETAILER = 0;
-
 
     public function __construct()
     {
@@ -26,13 +23,6 @@ class CustomerGroup extends Core\Table{
         ];
     }
 
-    public function getNameOptions()
-    {
-        return [
-            self::WHOLESELLER => "Wholseller",
-            self::RETAILER => "Retailer"
-        ];
-    }
-
 }
+
 ?>

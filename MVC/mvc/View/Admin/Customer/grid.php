@@ -23,7 +23,7 @@ $result=$this->getCustomers();
                   <tbody>
                   	 <strong>
                       <?php
-                      foreach ($result as $row){
+                      foreach ($result->getData() as $row){
                       ?>
                       </strong>
                       <tr>

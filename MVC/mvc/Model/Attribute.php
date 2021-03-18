@@ -4,7 +4,7 @@ namespace Model;
 
 \Mage::loadFileByClassName("Model\Core\Table");
 
-class Attribute extends Core\Table{
+class Attribute extends Core\Table {
  
  const STATUS_ENABLED = 1;
  const STATUS_DISABLED = 0;

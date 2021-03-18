@@ -1,38 +1,35 @@
-<?php 
+<?php
 
+namespace Block\Admin\Attribute;
 
-class Block_Attribute_Grid extends Block_Core_Template
-{
+\Mage::loadFileByClassName("Block\Core\Template");
+
+class Grid extends \Block\Core\Template {
 	protected $attributes = [];
 
-	public function __construct()
-	{
-    $this->setTemplate('./View/Attribute/grid.php');
+	public function __construct() {
+		$this->setTemplate('./View/Admin/Attribute/grid.php');
 	}
-	
-	public function setAttributes($attributes = NULL)
-	{
-		if(!$attributes){
-			$attribute = Mage::getModel("Model_Attribute");
-            $attributes = $attribute->fetchAll()->getData();
+
+	public function setAttributes($attributes = NULL) {
+		if (!$attributes) {
+			$attribute = \Mage::getModel("Model\Attribute");
+			$attributes = $attribute->fetchAll();
 		}
-		$this->attributes=$attributes;
+		$this->attributes = $attributes;
 		return $this;
 	}
 
-	public function getAttributes()
-	{
-	if(!$this->attributes){
-		$this->setAttributes();
+	public function getAttributes() {
+		if (!$this->attributes) {
+			$this->setAttributes();
+		}
+		return $this->attributes;
 	}
-	return $this->attributes;
-    }
 
-    public function getTitle()
-	{
+	public function getTitle() {
 		$this->getTitle = 'Manage Attributes';
 		return $this->getTitle;
 	}
 
 }
- ?>

@@ -13,7 +13,7 @@ class Adapter
     private $connect = null;
     function connection()
     {
-        $connect = mysqli_connect($this->config['host'], $this->config['user'], $this->config['password'], $this->config['database']);
+        $connect = \mysqli_connect($this->config['host'], $this->config['user'], $this->config['password'], $this->config['database']);
         $this->setConnect($connect);
     }
 
@@ -25,7 +25,7 @@ class Adapter
         return $this->connect;
     }
 
-    function setConnect(mysqli $connect)
+    function setConnect(\mysqli $connect)
     {
         $this->connect = $connect;
         return $this;

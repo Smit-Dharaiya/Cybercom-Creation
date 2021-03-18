@@ -2,76 +2,37 @@
 
 namespace Block\Admin\Category;
 
-\Mage::loadFileByClassName('Block\Admin\Core\Template');
+\Mage::loadFileByClassName('Block\Core\Edit');
 
-class Edit extends \Block\Admin\Core\Template{
-
-	protected $category = NULL;
+class Edit extends \Block\Core\Edit
+{
 
 	function __construct()
 	{
-		parent:: __construct();
-		$this->setTemplate("View/Admin/Category/edit.php");
-	}
-	
-	public function getTabContent()
-	{
-		$tabBlock = \Mage::getBlock("Block\Admin\Category\Edit\Tabs");
-		$tabs= $tabBlock->getTabs();
-		$tab=$this->getRequest()->getGet('tab',$tabBlock->getDefaultTab());
-		if(!array_key_exists($tab, $tabs)) {
-			return null;
-		}
-		$blockClassName = $tabs[$tab]['block'];
-		$block =Mage::getBlock($blockClassName);
-		return $block;
+		parent::__construct();
+		$this->setTabClass(\Mage::getBlock('Block\Admin\Category\Edit\Tabs'));
 	}
 
-	public function setCategory($category = NULL)
+	public function getTitle()
 	{
-		if($category){
-			$this->category = $category;
-			return $this;
-		}
-		$category = \Mage::getModel("Model\Category");
-		if($id = $this->getController()->getRequest()->getGet('id')){
-   			$category = $category->load($id);
-     	}
-		$this->category = $category;
-		return $this->category;
-	} 
-
-	public function getCategory()
-	{
-		if(!$this->category){
-			$this->setCategory();
-		}
-		return $this->category;
-    }
-
-    public function getTitle()
-    {
-    	if($this->getCategory()->id){
+		if ($this->getTableRow()->id) {
 			echo 'Update Category';
+		} else {
+			echo 'Add Category';
 		}
-		else
-		{echo 'Add Category';}
-    }
+	}
 
-    public function getFormUrl()
-    {
-    	return $this->getUrl('save');
-    }
-
-    public function getButton()
+	public function getFormUrl()
 	{
-		if($this->getCategory()->id){
+		return $this->getUrl('save');
+	}
+
+	public function getButton()
+	{
+		if ($this->getTableRow()->id) {
 			echo 'Update';
-		}
-		else{
-		echo 'Add';
+		} else {
+			echo 'Add';
 		}
 	}
 }
-
-?>	

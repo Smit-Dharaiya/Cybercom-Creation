@@ -1,6 +1,8 @@
 <?php
 
-class Model_ShippingMethod_Collection 
+namespace Model\ShippingMethod;
+
+class Collection 
 {
 	
 	protected $data = [];

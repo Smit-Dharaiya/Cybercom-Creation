@@ -1,73 +1,34 @@
-<?php 
+<?php
 
-namespace Block\Admin\Customer; 
+namespace Block\Admin\Customer;
 
-\\Mage::loadFileByClassName('Block\Admin\Core\Template');
+\Mage::loadFileByClassName('Block\Core\Edit');
 
 
-class Edit extends \Block\Admin\Core\Template{
-
-	protected $customer = NULL;
+class Edit extends \Block\Core\Edit
+{
 
 	public function __construct()
 	{
-		parent:: __construct();
-		$this->setTemplate("View/Admin/Customer/edit.php");
+		parent::__construct();
+		$this->setTabClass(\Mage::getBlock('Block\Admin\Customer\Edit\Tabs'));
 	}
 
-	public function getTabContent()
+	public function getTitle()
 	{
-
-		$tabBlock = \Mage::getBlock("Block\Admin\Customer\Edit\Tabs");
-		$tabs= $tabBlock->getTabs();
-		$tab=$this->getRequest()->getGet('tab',$tabBlock->getDefaultTab());
-		if(!array_key_exists($tab, $tabs))
-			return null;
-		$blockClassName = $tabs[$tab]['block'];
-		$block =\Mage::getBlock($blockClassName);
-		return $block;
-		// return $this;
-	}	
-
-	public function setCustomer($customer = NULL)
-	{
-		if($customer){
-			$this->customer = $customer;
-			return $this;
-		}
-		$customer = \Mage::getModel("Model\Customer");
-		if($id = $this->getRequest()->getGet('id')){
-   			$customer = $customer->load($id);
-     	}
-		$this->customer = $customer;
-	} 
-
-	public function getCustomer()
-	{
-		if(!$this->customer){
-			$this->setCustomer();
-		}
-		return $this->customer;
-    }
- 
-    public function getTitle()
-    {
-    	if($this->getCustomer()->id){
+		if ($this->getTableRow()->id) {
 			echo 'Update customer';
+		} else {
+			echo 'Add customer';
 		}
-		else
-		{echo 'Add customer';}
-    }
+	}
 
-    public function getButton()
+	public function getButton()
 	{
-		if($this->getCustomer()->id){
+		if ($this->getTableRow()->id) {
 			echo 'Update';
-		}
-		else{
-		echo 'Add';
+		} else {
+			echo 'Add';
 		}
 	}
 }
-
-?>

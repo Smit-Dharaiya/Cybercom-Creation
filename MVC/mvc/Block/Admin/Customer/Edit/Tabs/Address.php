@@ -1,21 +1,21 @@
-<?php 
+<?php
 
 namespace Block\Admin\Customer\Edit\Tabs;
 
-\Mage::loadFileByClassName("Block\Admin\Core\Template");
+\Mage::loadFileByClassName("Block\Core\Edit");
 
-class Address extends \Block\Admin\Core\Template
+class Address extends \Block\Core\Edit
 {
-	protected $address = null;
+    protected $address = null;
     protected $billing = null;
     protected $shipping = null;
 
-	function __construct()
-	{
-		$this->setTemplate("./View/Admin/Customer/Edit/Tabs/address.php");
-	}
+    function __construct()
+    {
+        $this->setTemplate("./View/Admin/Customer/Edit/Tabs/address.php");
+    }
 
-	public function validCustomer()
+    public function validCustomer()
     {
         $id = $this->getRequest()->getGet('id');
         $customer = \Mage::getModel("Model\Customer");
@@ -28,7 +28,7 @@ class Address extends \Block\Admin\Core\Template
 
     public function setCustomerAddress($address = null)
     {
-        if($address){
+        if ($address) {
             $this->address = $address;
             return $this;
         }
@@ -36,16 +36,16 @@ class Address extends \Block\Admin\Core\Template
         $this->billing = $address;
         $this->shipping = $address;
         if ($id = $this->getRequest()->getGet('id')) {
-            $query = "SELECT * FROM {$address->getTableName()} WHERE `customerId` = {$id};";   
+            $query = "SELECT * FROM {$address->getTableName()} WHERE `customerId` = {$id};";
             $address = $address->fetchAll($query);
             $this->address = $address;
-            if($address){
+            if ($address) {
                 foreach ($address->getData() as $value) {
                     $address = \Mage::getModel('Model\CustomerAddress');
-                    if($value->addressType == 'billing'){
+                    if ($value->addressType == 'billing') {
                         $this->billing = $value;
                     }
-                    if($value->addressType == 'shipping'){
+                    if ($value->addressType == 'shipping') {
                         $this->shipping = $value;
                     }
                 }
@@ -72,7 +72,7 @@ class Address extends \Block\Admin\Core\Template
 
     public function getCustomerAddress()
     {
-        if(!$this->address){
+        if (!$this->address) {
             $this->setCustomerAddress();
         }
         return $this->address;
@@ -84,9 +84,8 @@ class Address extends \Block\Admin\Core\Template
             echo 'Update';
         }
         else{
-        */echo 'Add';
+        */
+        echo 'Add';
         // }
     }
 }
-
-?>

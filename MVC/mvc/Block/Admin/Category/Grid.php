@@ -1,54 +1,47 @@
-<?php 
+<?php
 
 namespace Block\Admin\Category;
 
-\Mage::loadFileByClassName("Block\Admin\Core\Template");
+\Mage::loadFileByClassName("Block\Core\Template");
 
-class Grid extends \Block\Admin\Core\Template
-{
+class Grid extends \Block\Core\Template {
 	protected $categories = [];
 	protected $categoriesOptions = [];
 
-
-	public function __construct()
-	{
-    $this->setTemplate('./View/Admin/Category/grid.php');
+	public function __construct() {
+		$this->setTemplate('./View/Admin/Category/grid.php');
 	}
-	
-	public function setCategories($categories = NULL)
-	{
-		if(!$categories){
+
+	public function setCategories($categories = NULL) {
+		if (!$categories) {
 			$category = \Mage::getModel("Model\Category");
-            $categories = $category->fetchAll()->getData();
+			$categories = $category->fetchAll();
 		}
-		$this->categories=$categories;
+		$this->categories = $categories;
 		return $this;
 	}
 
-	public function getCategories()
-	{
-	if(!$this->categories){
-		$this->setCategories();
+	public function getCategories() {
+		if (!$this->categories) {
+			$this->setCategories();
+		}
+		return $this->categories;
 	}
-	return $this->categories;
-    }
 
-    public function getTitle()
-	{
+	public function getTitle() {
 		$this->getTitle = 'Manage categories';
 		return $this->getTitle;
 	}
 
-	public function getName($category)
-	{
-		$categoryModel =  \Mage::getModel("Model\Category"); 
-		if(!$this->categoriesOptions){
+	public function getName($category) {
+		$categoryModel = \Mage::getModel("Model\Category");
+		if (!$this->categoriesOptions) {
 			$query = "SELECT `id`,`categoryName` FROM `{$categoryModel->getTableName()}`";
 			$this->categoriesOptions = $categoryModel->getAdapter()->fetchPairs($query);
 		}
 		$paths = explode("=", $category->path);
 		foreach ($paths as $key => &$id) {
-			if(array_key_exists($id, $this->categoriesOptions)){
+			if (array_key_exists($id, $this->categoriesOptions)) {
 				$id = $this->categoriesOptions[$id];
 			}
 		}
@@ -56,5 +49,3 @@ class Grid extends \Block\Admin\Core\Template
 		return $name;
 	}
 }
-
-?>

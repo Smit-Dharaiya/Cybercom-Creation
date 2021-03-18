@@ -4,23 +4,21 @@ namespace Model;
 
 \Mage::loadFileByClassName("Model\Core\Table");
 
-class CmsPage extends Core\Table{
- 
- const STATUS_ENABLED = 1;
- const STATUS_DISABLED = 0;
+class CmsPage extends Core\Table {
 
-    public function __construct()
-    {
-        $this->setTableName("cmspage");
-        $this->setPrimaryKey("id");
-    }
+	const STATUS_ENABLED = 1;
+	const STATUS_DISABLED = 0;
 
-    public function getStatusOptions()
-     {
-        return [
-            self::STATUS_DISABLED => "Disable",
-            self::STATUS_ENABLED => "Enable"
-        ];
-    }
+	public function __construct() {
+		$this->setTableName("cmspage");
+		$this->setPrimaryKey("id");
+	}
+
+	public function getStatusOptions() {
+		return [
+			self::STATUS_DISABLED => "Disable",
+			self::STATUS_ENABLED => "Enable",
+		];
+	}
 }
 ?>

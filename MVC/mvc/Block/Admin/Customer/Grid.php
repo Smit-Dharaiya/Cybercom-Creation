@@ -2,9 +2,9 @@
 
 namespace Block\Admin\Customer;
 
-\Mage::loadFileByClassName("Block\Admin\Core\Template");
+\Mage::loadFileByClassName("Block\Core\Template");
 
-class Grid extends \Block\Admin\Core\Template
+class Grid extends \Block\Core\Template
 {
 	protected $customers = [];
 	
@@ -16,8 +16,8 @@ class Grid extends \Block\Admin\Core\Template
 	public function setCustomers($customers = NULL)
 	{
 		if(!$customers){
-			$customer = \Mage::getModel("Model_Customer");
-            $customers = $customer->fetchAll()->getData();
+			$customer = \Mage::getModel("Model\Customer");
+            $customers = $customer->fetchAll();
 		}
 		$this->customers=$customers;
 		return $this;
@@ -38,5 +38,3 @@ class Grid extends \Block\Admin\Core\Template
 	}
 
 }
-
-?>

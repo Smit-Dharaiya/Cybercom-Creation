@@ -24,7 +24,7 @@ $result=$this->getProducts();
               <tbody>
              	    <strong>
                     <?php
-                    foreach ($result as $row) {
+                    foreach ($result->getData() as $row) {
                     ?>   </strong>
                       <tr>
                           <td><?php echo $row->SKU ?></td>
@@ -44,7 +44,7 @@ $result=$this->getProducts();
                           </td>
                           <td><a href="<?php  echo $this->getUrlObject()->getUrl('form',NULL,['id'=>"$row->id"],TRUE);?>"><i class="fas fa-pencil" aria-hidden="true"></i></a></td>
                           <td><a href="<?php echo $this->getUrlObject()->getUrl('delete',NULL,['id'=>"$row->id"],TRUE); ?>"><i class="fas fa-trash-alt" aria-hidden="true"></i></a></td> 
-                          <td><a href="<?php echo $this->getUrlObject()->getUrl('index','product_group_price',['id'=>"$row->id"],TRUE); ?>"><i class="fas fa-trash-alt" aria-hidden="true"></i></a></td> 
+                          <td><a href="<?php echo $this->getUrlObject()->getUrl('index','Product\Group\Price',['id'=>"$row->id"],TRUE); ?>"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></a></td> 
                         </tr>
 
                       <?php
