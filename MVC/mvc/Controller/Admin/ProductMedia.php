@@ -41,7 +41,7 @@ class ProductMedia extends \Controller\Core\Admin
     public function saveAction()
     {
         $this->_imageUpload();
-        $this->redirect('form', 'product', ['tab' => 'media']);
+        // $this->redirect('form', 'product', ['tab' => 'media']);
     }
 
     protected function _imageUpload()
@@ -93,7 +93,6 @@ class ProductMedia extends \Controller\Core\Admin
     public function deleteAction($id = null)
     {
         try {
-
             if (!$removeData = $this->getRequest()->getPost()['img']['data']) {
                 throw new \Exception("Please Select Data.");
             }
@@ -105,7 +104,7 @@ class ProductMedia extends \Controller\Core\Admin
                         if (!$media->delete()) {
                             throw new \Exception("Error Processing Data.");
                         } else {
-                            unlink("./Uploads/Product/{$imageName}");
+                            unlink("./Uploads/Product/$imageName");
                             $this->getMessage()->setSuccess('Record Successfully Deleted !!');
                         }
                     }

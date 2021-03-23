@@ -1,40 +1,141 @@
-<?php 
+<?php
 
 namespace Block\Admin\Customer;
 
-\Mage::loadFileByClassName("Block\Core\Template");
+\Mage::loadFileByClassName("Block\Core\Grid");
 
-class Grid extends \Block\Core\Template
+class Grid extends \Block\Core\Grid
 {
-	protected $customers = [];
-	
-	public function __construct()
+	public function prepareCollection()
 	{
-    $this->setTemplate('./View/Admin/Customer/grid.php');
-	}
-	
-	public function setCustomers($customers = NULL)
-	{
-		if(!$customers){
-			$customer = \Mage::getModel("Model\Customer");
-            $customers = $customer->fetchAll();
-		}
-		$this->customers=$customers;
+		$customer = \Mage::getModel("Model\Customer");
+		$collection = $customer->fetchAll();
+
+		$this->setCollection($collection);
+		$this->getStatus();
 		return $this;
 	}
 
-	public function getCustomers()
+	public function prepareColumns()
 	{
-	if(!$this->customers){
-		$this->setCustomers();
-	}
-	return $this->customers;
-    }
+		$this->addColumns('id', [
+			'field' => 'id',
+			'label' => 'Id',
+			'type' => 'number',
 
-    public function getTitle()
+		]);
+		$this->addColumns('firstName', [
+			'field' => 'firstName',
+			'label' => 'First Name',
+			'type' => 'text',
+
+		]);
+		$this->addColumns('lastName', [
+			'field' => 'lastName',
+			'label' => 'Last Name',
+			'type' => 'text',
+
+		]);
+		$this->addColumns('email', [
+			'field' => 'email',
+			'label' => 'Email',
+			'type' => 'email',
+
+		]);
+		$this->addColumns('contactNo', [
+			'field' => 'contactNo',
+			'label' => 'Contact No.',
+			'type' => 'number',
+
+		]);
+		$this->addColumns('status', [
+			'field' => 'status',
+			'label' => 'Status',
+			'type' => 'boolian',
+
+		]);
+		$this->addColumns('createdDate', [
+			'field' => 'createdDate',
+			'label' => 'Created Date',
+			'type' => 'date',
+
+		]);
+		$this->addColumns('updatedDate', [
+			'field' => 'updatedDate',
+			'label' => 'Updated Date',
+			'type' => 'date',
+
+		]);
+
+		return $this;
+	}
+
+	public function getTitle()
 	{
-		$this->getTitle = 'Customers Details';
+		$this->getTitle = 'Manage Customers';
 		return $this->getTitle;
 	}
 
+	// -----> Manage button actions ------
+
+	public function prepareActions()
+	{
+		$this->addActions('edit', [
+			'label' => "<i class='fas fa-pen'></i>",
+			'method' => 'getEditUrl',
+			'ajax' => false
+		]);
+		$this->addActions('delete', [
+			'label' => '<i class="fas fa-trash-alt"></i>',
+			'method' => 'getDeleteUrl',
+			'ajax' => false
+		]);
+		return $this;
+	}
+
+	public function getEditUrl($row)
+	{
+		return $this->getUrlObject()->getUrl('form', null, ['id' => $row->id], true);
+	}
+
+	public function getDeleteUrl($row)
+	{
+		return $this->getUrlObject()->getUrl('delete', null, ['id' => $row->id], true);
+	}
+
+
+
+
+	// -----> Manage buttons ------
+
+	public function prepareButtons()
+	{
+		$this->addButtons('addnew', [
+			'label' => '<i class="fas fa-plus"></i> Add New',
+			'method' => 'AddNewUrl',
+			'ajax' => false,
+		]);
+		$this->addButtons('applyFilter', [
+			'label' => '<i class="fas fa-filter"></i> Apply Filter',
+			'method' => 'getFilterAction',
+			'ajax' => false,
+		]);
+		return $this;
+	}
+
+	public function getStatus()
+	{
+		$collection = $this->getCollection();
+		if (!$collection) {
+			return \false;
+		}
+		foreach ($collection->getData() as &$row) {
+			if ($row->status) {
+				$row->status = 'Enable';
+			} else {
+				$row->status = 'Disable';
+			}
+		}
+		return;
+	}
 }

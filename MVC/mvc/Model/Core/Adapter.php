@@ -11,6 +11,7 @@ class Adapter
         'database' => 'project'
     ];
     private $connect = null;
+    
     function connection()
     {
         $connect = \mysqli_connect($this->config['host'], $this->config['user'], $this->config['password'], $this->config['database']);
@@ -129,5 +130,3 @@ class Adapter
         return array_combine($columns, $values);
     }
 }
-
-?>

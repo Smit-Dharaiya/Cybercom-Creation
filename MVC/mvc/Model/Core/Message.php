@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Model\Core;
 
@@ -9,7 +9,6 @@ class Message extends Session
 
 	public function setSuccess($message)
 	{
-		$this->success = $message;
 		return $this->success;
 	}
 
@@ -57,7 +56,4 @@ class Message extends Session
 		// return $this;
 
 	}
-
 }
-
- ?>

@@ -15,7 +15,7 @@ $cmsPage = $this->getTableRow();
         </div>
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" style="width: 20%"><b>Content</b></span>
-            <input type="text" class="form-control   " name="cmsPage[content]" id="content" placeholder="CMS Page content" value="<?php echo $cmsPage->content; ?>">
+            <textarea id="editor" name="cmsPage[content]"><?php echo $cmsPage->content; ?></textarea>
         </div>
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" style="width: 20%"><b>Status</b></span>

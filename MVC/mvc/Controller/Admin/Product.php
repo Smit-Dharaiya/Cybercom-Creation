@@ -76,6 +76,7 @@ class Product extends \Controller\Core\Admin
             $product->createdAt = date("Y-m-d H:i:s");
             $productData = $this->getRequest()->getPost('product');
             $product->setData($productData);
+
             if ($product->save()) {
                 $this->getMessage()->setSuccess("Record Added Successfully");
             } else {
@@ -106,6 +107,19 @@ class Product extends \Controller\Core\Admin
         } catch (\Exception $e) {
             echo $this->getMessage()->setFailure($e->getMessage());
         }
+        $this->redirect('grid');
+    }
+
+    public function filterAction()
+    {
+        $data = $this->getRequest()->getPost('filter');
+        $this->getFilterObject()->setFilters($data);
+        $this->redirect('grid');
+    }
+
+    public function clearFilterAction()
+    {
+        $this->getFilterObject()->clearFilters('product');
         $this->redirect('grid');
     }
 }

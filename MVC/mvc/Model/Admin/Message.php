@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace Model\Admin;
 
 \Mage::loadFileByClassName('Model\Admin\Session');
 
 class Message extends Session
-{	
+{
 
 	public function setSuccess($message)
 	{
@@ -15,7 +15,7 @@ class Message extends Session
 
 	public function getSuccess()
 	{
-		if(!$this->success) {
+		if (!$this->success) {
 			$this->setSuccess($this->success);
 		}
 		return $this->success;
@@ -58,9 +58,5 @@ class Message extends Session
 	{
 		unset($this->notice);
 		return $this;
-
 	}
-
 }
-
-?>

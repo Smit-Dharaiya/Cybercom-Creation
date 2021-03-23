@@ -14,4 +14,3 @@ class Session extends \Model\Core\Session
 	}
 
 }
- ?>

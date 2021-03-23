@@ -12,6 +12,8 @@ class Template
 	protected $urlObject = null;
 	protected $tabs = [];
 	protected $defaultTab = null;
+	protected $filters = null;
+
 
 	public function __construct()
 	{
@@ -187,5 +189,22 @@ class Template
 			return null;
 		}
 		unset($this->tabs[$key]);
+	}
+
+	public function setFilterObject(\Model\Admin\Filter $filters = null)
+	{
+		if (!$this->filters) {
+			$filters = \Mage::getModel('Model\Admin\Filter');
+		}
+		$this->filters = $filters;
+		return $this->filters;
+	}
+
+	public function getFilterObject()
+	{
+		if (!$this->filters) {
+			$this->setFilterObject();
+		}
+		return $this->filters;
 	}
 }

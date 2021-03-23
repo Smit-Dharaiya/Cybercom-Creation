@@ -4055,7 +4055,7 @@
 
 
 
-    jQuery.ready\Exception = function (error) {
+    jQuery.readyexception = function (error) {
         window.setTimeout(function () {
             throw error;
         });
@@ -4076,7 +4076,7 @@
             // happens at the time of error handling instead of callback
             // registration.
             .catch(function (error) {
-                jQuery.ready\Exception(error);
+                jQuery.readyexception(error);
             });
 
         return this;

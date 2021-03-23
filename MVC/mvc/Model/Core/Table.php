@@ -145,17 +145,6 @@ class Table
         return $collection;
     }
 
-    // public function delete($id)
-    // {
-    //     $id = (int)$id;
-    //     $query = "DELETE FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}` = '{$id}'";
-    //     $recordId = $this->getAdapter()->delete($query);
-    //     if (!$recordId) {
-    //         return false;
-    //     }
-    //     return $this;
-    // }
-
     public function delete()
     {
 
