@@ -95,8 +95,6 @@ class Grid extends \Block\Core\Grid
 		return $this->getTitle;
 	}
 
-	// -----> Manage button actions ------
-
 	public function prepareActions()
 	{
 		$this->addActions('edit', [
@@ -121,8 +119,6 @@ class Grid extends \Block\Core\Grid
 	{
 		return $this->getUrlObject()->getUrl('delete', null, ['id' => $row->id], true);
 	}
-
-	// -----> Manage buttons ------
 
 	public function prepareButtons()
 	{
