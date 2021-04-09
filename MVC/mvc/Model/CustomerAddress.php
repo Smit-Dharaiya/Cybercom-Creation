@@ -4,7 +4,8 @@ namespace Model;
 
 \Mage::loadFileByClassName("Model\Core\Table");
 
-class CustomerAddress extends Core\Table{
+class CustomerAddress extends Core\Table
+{
  
  const TYPE_BILLING = 1;
  const TYPE_SHIPPING = 0;
@@ -24,4 +25,3 @@ class CustomerAddress extends Core\Table{
     }
 
 }
-?>

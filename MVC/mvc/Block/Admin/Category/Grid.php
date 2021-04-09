@@ -79,7 +79,7 @@ class Grid extends \Block\Core\Grid
 
 	public function getTitle()
 	{
-		$this->getTitle = 'Manage Customers';
+		$this->getTitle = 'Manage Category';
 		return $this->getTitle;
 	}
 
@@ -142,10 +142,10 @@ class Grid extends \Block\Core\Grid
 			return \false;
 		}
 		foreach ($collection->getData() as &$row) {
-			if ($row->status) {
-				$row->status = 'Enable';
+			if ($row->categoryStatus) {
+				$row->categoryStatus = 'Enable';
 			} else {
-				$row->status = 'Disable';
+				$row->categoryStatus = 'Disable';
 			}
 		}
 		return;

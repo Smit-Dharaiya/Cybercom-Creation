@@ -44,7 +44,7 @@ $id = $this->getRequest()->getGet('id');
             </div>
             <div class="col-md-4 float-end">
                 <input class="btn btn-success float-end m-4" type="submit" value="Upload" formaction="<?php echo $this->getUrlObject()->getUrl('save', 'productMedia', ['id' => $id]); ?>">
-                <!-- <button class="btn btn-success float-end m-4" type="submit">Upload</a><br><br> -->
+                <a href="<?php echo $this->getUrlObject()->getUrl('grid', 'product', null, true); ?>" name="back" id="back" class="btn btn-dark float-end my-4"><i class="fas fa-arrow-alt-circle-left fa=sm"></i> Back</a>
             </div>
         </div>
     </form>

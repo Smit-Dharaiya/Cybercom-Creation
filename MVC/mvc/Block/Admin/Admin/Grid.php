@@ -9,8 +9,11 @@ class Grid extends \Block\Core\Grid
 	public function prepareCollection()
 	{
 		$admin = \Mage::getModel("Model\Admin");
-		$collection = $admin->fetchAll();
-
+		if ($this->getFilterObject()->getFilters($this->getTableName())) {
+			$collection = $admin->fetchAll($this->buildFilterQuery($admin->getTableName()));
+		} else {
+			$collection = $admin->fetchAll();
+		}
 		$this->setCollection($collection);
 		$this->getStatus();
 		return $this;
@@ -18,34 +21,42 @@ class Grid extends \Block\Core\Grid
 
 	public function prepareColumns()
 	{
+		$tableName = $this->getTableName();
+
 		$this->addColumns('id', [
 			'field' => 'id',
 			'label' => 'Id',
 			'type' => 'number',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'id'),
+
 
 		]);
 		$this->addColumns('username', [
 			'field' => 'username',
 			'label' => 'Admin Name',
 			'type' => 'text',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'username'),
 
 		]);
 		$this->addColumns('password', [
 			'field' => 'password',
 			'label' => 'Admin Password',
 			'type' => 'password',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'password'),
 
 		]);
 		$this->addColumns('status', [
 			'field' => 'status',
 			'label' => 'Status',
 			'type' => 'boolian',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'status'),
 
 		]);
 		$this->addColumns('createdDate', [
 			'field' => 'createdDate',
 			'label' => 'Created Date',
 			'type' => 'date',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'createdDate'),
 		]);
 		return $this;
 	}
@@ -97,6 +108,14 @@ class Grid extends \Block\Core\Grid
 			'method' => 'getFilterAction',
 			'ajax' => false,
 		]);
+		if ($this->getFilterObject()->getFilters($this->getTableName()) != null) {
+			$this->addButtons('clearFilter', [
+				'label' => '<i class="fas fa-times-circle"> Clear Filters</i>',
+				'method' => 'getClearFilterAction',
+				'ajax' => false,
+			]);
+			return $this;
+		}
 		return $this;
 	}
 
@@ -114,5 +133,10 @@ class Grid extends \Block\Core\Grid
 			}
 		}
 		return;
+	}
+
+	public function getTableName()
+	{
+		return \Mage::getModel('Model\Admin')->getTableName();
 	}
 }

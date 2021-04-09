@@ -14,7 +14,6 @@ class Template
 	protected $defaultTab = null;
 	protected $filters = null;
 
-
 	public function __construct()
 	{
 		$this->setRequest();

@@ -36,7 +36,7 @@ $tableName = $this->getTableName();
                             <th><?php echo $column['label'] ?></th>
                         <?php endforeach; ?>
                         <?php if ($actions) : ?>
-                            <th colspan="2">Actions</th>
+                            <th colspan="<?php echo sizeof($actions); ?>">Actions</th>
                         <?php endif; ?>
                     </tr>
                 <?php endif; ?>
@@ -50,7 +50,7 @@ $tableName = $this->getTableName();
                                                                                                                                                     ?>" placeholder='Filter' />
                             </th>
                         <?php endforeach; ?>
-                        <th colspan="2"> </th>
+                        <th colspan="<?php echo sizeof($actions); ?>"> </th>
                     </tr>
                 <?php endif; ?>
                 <?php if ($collection) : ?>

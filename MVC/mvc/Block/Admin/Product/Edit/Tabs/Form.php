@@ -20,4 +20,9 @@ class Form extends \Block\Core\Edit
 			echo 'Add';
 		}
 	}
+
+	public function getCategory()
+	{
+		return $category = \Mage::getModel('Model\Category')->fetchAll();
+	}
 }

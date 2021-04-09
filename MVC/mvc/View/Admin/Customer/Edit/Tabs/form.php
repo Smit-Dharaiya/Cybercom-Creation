@@ -1,11 +1,11 @@
 <?php
 $customer = $this->getTableRow();
+$customerGroup = $this->getCustomerGroup();
 ?>
 
 <div class="container">
 
     <form method="POST" class="w-50" action='<?php echo $this->getUrlObject()->getUrl("save", null, null, true); ?>'>
-        <hr>
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" style="width: 20%"><b>First Name</b></span>
             <input type="text" class="form-control   " name="customer[firstName]" id="fname" placeholder="FirstName" value="<?php echo  $customer->firstName; ?>">
@@ -39,7 +39,24 @@ $customer = $this->getTableRow();
                 <?php } ?>
             </select>
         </div>
-        <button name="submit" id="submit" class="btn btn-primary   "><?php echo $this->getButton(); ?></button>
+        <?php if ($customerGroup) : ?>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" style="width: 20%"><b>Customer Group</b></span>
+                <select class="custom-select form-control" name="customer[customerGroup]">
+                    <option value="" disabled selected>Select</option>
+                    <?php
+                    foreach ($customerGroup->getData() as $key => $value) { ?>
+                        <option class="form-control" value="<?php echo $value->name; ?>" <?php if ($customer->getOriginalData()) {
+                                                                                                if ($customer->getOriginalData()['customerGroup'] == $value->name) echo "selected";
+                                                                                            } ?>>
+                            <?php echo $value->name; ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php endif; ?>
+        <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left fa=sm"></i> Back</a>
+        <button name="submit" id="submit" class="btn btn-primary mx-2"><?php echo $this->getButton(); ?></button>
         <br><br>
     </form>
 </div>

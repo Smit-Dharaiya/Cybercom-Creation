@@ -1,11 +1,12 @@
-<?php 
+<?php
 
 namespace Model\Core;
 
-class Session{
+class Session
+{
 
 	protected $nameSpace = null;
-	
+
 
 	public function __construct()
 	{
@@ -27,16 +28,15 @@ class Session{
 
 	public function start()
 	{
-		if(session_status() == PHP_SESSION_NONE){
-            session_start();
-        }
-        return $this;
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		return $this;
 	}
 
 	public function getId()
 	{
 		return session_id();
-
 	}
 
 	public function destroy()
@@ -50,7 +50,7 @@ class Session{
 		return session_regenerate_id();
 	}
 
-	public function __set($key,$value)
+	public function __set($key, $value)
 	{
 		$_SESSION[$this->getNameSpace()][$key] = $value;
 		return $this;
@@ -72,9 +72,4 @@ class Session{
 		}
 		return $this;
 	}
-
 }
-
-?>
-
-

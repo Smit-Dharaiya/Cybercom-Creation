@@ -97,4 +97,16 @@ class ShippingMethod extends \Controller\Core\Admin
         }
         $this->redirect('grid');
     }
+    public function filterAction()
+    {
+        $data = $this->getRequest()->getPost('filter');
+        $this->getFilterObject()->setFilters($data);
+        $this->redirect('grid');
+    }
+
+    public function clearFilterAction()
+    {
+        $this->getFilterObject()->clearFilters('shippingmethod');
+        $this->redirect('grid');
+    }
 }

@@ -30,20 +30,21 @@ $categoryOptions = $this->getCategoryOptions();
         </div>
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" style="width: 20%"><b>Status</b></span>
-            <select class="custom-select    form-control" name="category[categoryStatus]">
+            <select class="custom-select form-control" name="category[categoryStatus]">
+                <option value=" " selected disabled>Select</option>
                 <?php
                 foreach ($category->getStatusOptions() as $key => $value) {
                 ?>
-                    <option class="form-control" value="<?php echo $key; ?>" <?php if ($category->categoryStatus == $key) {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>
+                    <option class="form-control" value="<?php echo $key; ?>" <?php if ($category->getOriginalData()) {
+                                                                                    if ($category->categoryStatus == $key) echo "selected";
+                                                                                } ?>>
                         <?php echo $value; ?>
                     </option>
                 <?php } ?>
             </select>
         </div>
-        <button name="submit" id="submit" class="btn btn-primary   "><?php echo $this->getButton(); ?></button>
+        <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left fa=sm"></i> Back</a>
+        <button name="submit" id="submit" class="btn btn-primary mx-2"><?php echo $this->getButton(); ?></button>
         <br><br>
     </form>
 </div>

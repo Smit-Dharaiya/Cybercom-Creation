@@ -54,7 +54,8 @@ $entityTypeOptions = $this->getEntityTypeOptions();
             <span class="input-group-text" style="width: 20%"><b>SortOrder</b></span>
             <input type="text" class="form-control   " name="attribute[sortOrder]" id="sortOrder" placeholder="sortOrder" value="<?php echo $attribute->sortOrder; ?>">
         </div>
-        <button name="submit" id="submit" class="btn btn-primary   "><?php echo $this->getButton(); ?></button>
+        <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left fa=sm"></i> Back</a>
+        <button name="submit" id="submit" class="btn btn-primary mx-2"><?php echo $this->getButton(); ?></button>
         <br><br>
     </form>
 </div>

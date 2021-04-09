@@ -16,9 +16,11 @@ class Filter extends Session
             $this->filters = $filters;
             return $this;
         }
+
         $this->filters = $filters + $this->filters;
         return $this;
     }
+
     public function getFilters($tableName = null, $key = null)
     {
         if (is_array($this->filters)) {

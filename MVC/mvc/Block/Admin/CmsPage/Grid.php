@@ -9,7 +9,11 @@ class Grid extends \Block\Core\Grid
 	public function prepareCollection()
 	{
 		$cmsPage = \Mage::getModel("Model\CmsPage");
-		$collection = $cmsPage->fetchAll();
+		if ($this->getFilterObject()->getFilters($this->getTableName())) {
+			$collection = $cmsPage->fetchAll($this->buildFilterQuery($cmsPage->getTableName()));
+		} else {
+			$collection = $cmsPage->fetchAll();
+		}
 
 		$this->setCollection($collection);
 		$this->getStatus();
@@ -18,40 +22,48 @@ class Grid extends \Block\Core\Grid
 
 	public function prepareColumns()
 	{
+		$tableName = $this->getTableName();
 		$this->addColumns('id', [
 			'field' => 'id',
 			'label' => 'Id',
 			'type' => 'number',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'id'),
 
 		]);
 		$this->addColumns('title', [
 			'field' => 'title',
 			'label' => 'Title',
 			'type' => 'text',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'title'),
 
 		]);
 		$this->addColumns('identifier', [
 			'field' => 'identifier',
 			'label' => 'Identifier',
 			'type' => 'text',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'identifier'),
 
 		]);
 		$this->addColumns('content', [
 			'field' => 'content',
 			'label' => 'Content',
 			'type' => 'text',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'content'),
 
 		]);
 		$this->addColumns('status', [
 			'field' => 'status',
 			'label' => 'Status',
 			'type' => 'boolian',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'status'),
 
 		]);
 		$this->addColumns('createdDate', [
 			'field' => 'createdDate',
 			'label' => 'Created Date',
 			'type' => 'date',
+			'filter' => $this->getFilterObject()->getFilters($tableName, 'createdDate'),
+
 		]);
 		return $this;
 	}
@@ -103,6 +115,14 @@ class Grid extends \Block\Core\Grid
 			'method' => 'getFilterAction',
 			'ajax' => false,
 		]);
+		if ($this->getFilterObject()->getFilters($this->getTableName()) != null) {
+			$this->addButtons('clearFilter', [
+				'label' => '<i class="fas fa-times-circle"> Clear Filters</i>',
+				'method' => 'getClearFilterAction',
+				'ajax' => false,
+			]);
+			return $this;
+		}
 		return $this;
 	}
 
@@ -120,5 +140,10 @@ class Grid extends \Block\Core\Grid
 			}
 		}
 		return;
+	}
+
+	public function getTableName()
+	{
+		return \Mage::getModel('Model\CmsPage')->getTableName();
 	}
 }

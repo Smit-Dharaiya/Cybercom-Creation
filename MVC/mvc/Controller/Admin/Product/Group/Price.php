@@ -25,7 +25,6 @@ class Price extends \Controller\Core\Admin
 
 	public function saveAction()
 	{
-
 		$groupData = $this->getRequest()->getPost('groupPrice');
 		$productId = $this->getRequest()->getGet('id');
 
@@ -51,6 +50,6 @@ class Price extends \Controller\Core\Admin
 				$groupPrice->save();
 			}
 		}
-		$this->redirect('index', 'product\Group\Price', ['id' => $productId], true);
+		$this->redirect('form', 'product', ['id' => $productId, 'tab' => 'product_group_price'], true);
 	}
 }

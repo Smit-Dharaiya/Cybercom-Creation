@@ -13,9 +13,9 @@ class Pager
     protected $previous = null;
     protected $next = null;
 
-    public function setTotalRecords($record)
+    public function setTotalRecords(int $totalRecords)
     {
-        $this->totalRecords = $record;
+        $this->totalRecords = $totalRecords;
         return $this;
     }
 
@@ -47,9 +47,9 @@ class Pager
         return $this->noOfPages;
     }
 
-    protected function setEnd($offset)
+    protected function setEnd($end)
     {
-        $this->end = $offset;
+        $this->end = $end;
         return $this;
     }
 
@@ -57,9 +57,9 @@ class Pager
     {
         return $this->end;
     }
-    protected function setStart($offset)
+    protected function setStart($start)
     {
-        $this->start = $offset;
+        $this->start = $start;
         return $this;
     }
 
@@ -68,9 +68,9 @@ class Pager
         return $this->start;
     }
 
-    public function setCurrentPage($offset)
+    public function setCurrentPage(int $currentPage)
     {
-        $this->currentPage = $offset;
+        $this->currentPage = $currentPage;
         return $this;
     }
     public function getCurrentPage()
@@ -78,9 +78,9 @@ class Pager
         return $this->currentPage;
     }
 
-    protected function setPrevious($offset)
+    protected function setPrevious($previous)
     {
-        $this->previous = $offset;
+        $this->previous = $previous;
         return $this;
     }
 
@@ -89,9 +89,9 @@ class Pager
         return $this->previous;
     }
 
-    protected function setNext($offset)
+    protected function setNext($next)
     {
-        $this->next = $offset;
+        $this->next = $next;
         return $this;
     }
     public function getNext()
@@ -103,7 +103,7 @@ class Pager
     {
         if ($this->getTotalRecords() <= $this->getRecordPerPage()) {
             $this->setNoOfPages(1);
-            $this->setStart(1);
+            $this->setStart(\null);
             $this->setEnd(null);
             $this->setPrevious(null);
             $this->setNext(null);
@@ -116,17 +116,15 @@ class Pager
 
         if ($this->getCurrentPage() > $this->getNoOfPages()) {
             $this->setCurrentPage($this->getNoOfPages());
-            return $this;
         }
 
         if ($this->getCurrentPage() < $this->getStart()) {
             $this->setCurrentPage($this->getStart());
-            return $this;
         }
 
         if ($this->getCurrentPage() == $this->getStart()) {
             $this->setPrevious(null);
-            $this->setStart(null);
+            $this->setStart(1); //may be
             if ($this->getCurrentPage() < $this->getNoOfPages()) {
                 $this->setNext($this->getCurrentPage() + 1);
             }

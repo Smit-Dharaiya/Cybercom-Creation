@@ -4,7 +4,7 @@
 
 <body>
 
-	<table border="1" width="100%">
+	<table width="100%" style="border: none;">
 		<tbody>
 			<tr>
 				<td colspan="3">
@@ -12,7 +12,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="align-top" width="10%"> <?php echo $this->getChild('left')->toHtml(); ?></td>
+				<td class="fixed-top" width="10%"> <?php echo $this->getChild('left')->toHtml(); ?></td>
 				<td width="80%">
 					<?php echo  $this->getChild('message')->toHtml(); ?>
 					<?php echo $this->getChild('content')->toHtml(); ?>

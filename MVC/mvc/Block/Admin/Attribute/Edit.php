@@ -15,7 +15,7 @@ class Edit extends \Block\Core\Edit
 
 	public function getTitle()
 	{
-		if ($this->getTableRow()->attributeId) {
+		if ($this->getTableRow()->id) {
 			echo 'Update Attribute Details';
 		} else {
 			echo 'Add Attribute Details';
@@ -29,7 +29,7 @@ class Edit extends \Block\Core\Edit
 
 	public function getButton()
 	{
-		if ($this->getTableRow()->AttributeId) {
+		if ($this->getTableRow()->id) {
 			echo 'Update';
 		} else {
 			echo 'Add';

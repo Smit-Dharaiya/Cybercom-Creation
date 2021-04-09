@@ -6,7 +6,7 @@
 
 <body>
 
-	<table border="1" width="100%">
+	<table width="100%">
 		<tbody>
 			<tr>
 				<td colspan="3">

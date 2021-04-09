@@ -6,7 +6,6 @@ namespace Block\Core;
 
 class Grid extends Template
 {
-
     protected $collection = [];
     protected $columns = [];
     protected $actions = [];
@@ -21,10 +20,12 @@ class Grid extends Template
         $this->prepareButtons();
         $this->setTemplate('./view/core/grid.php');
     }
+
     public function prepareCollection()
     {
         return $this;
     }
+
     public function setCollection($collection)
     {
 
@@ -41,6 +42,7 @@ class Grid extends Template
     {
         return $this->columns;;
     }
+
     public function addColumns($key, $value)
     {
         $this->columns[$key] = $value;
@@ -69,6 +71,7 @@ class Grid extends Template
     {
         return $this->actions;
     }
+
     public function addActions($key, $actions)
     {
         $this->actions[$key] = $actions;
@@ -91,6 +94,7 @@ class Grid extends Template
     {
         return $this->buttons;
     }
+
     public function addButtons($key, $buttons)
     {
         $this->buttons[$key] = $buttons;
@@ -109,6 +113,7 @@ class Grid extends Template
         }
         return "submit()";
     }
+
     public function addNewUrl()
     {
         return $this->getUrlObject()->getUrl('form');
@@ -123,17 +128,19 @@ class Grid extends Template
     {
         $filters = $this->getFilterObject()->getFilters($tableName);
         // $this->getFilterObject()->clearFilters();
-        $query = "SELECT * FROM `{$tableName}`";
-        if ($filters) {
-            $query .= " WHERE ";
-            foreach ($filters as $key => $value) {
-                if ($value) {
-                    $query .= "`" . $key . "` LIKE '%" . $value . "%' AND ";
+        if (array_filter($filters)) {
+            if ($filters) {
+                $query = "SELECT * FROM `{$tableName}`";
+                $query .= " WHERE ";
+                foreach ($filters as $key => $value) {
+                    if ($value) {
+                        $query .= "`" . $key . "` LIKE '%" . $value . "%' AND ";
+                    }
                 }
+                $query = rtrim($query, ' AND ') . ";";
             }
-            $query = rtrim($query, ' AND ') . ";";
+            return $query;
         }
-        return $query;
     }
 
     public function getClearFilterAction()

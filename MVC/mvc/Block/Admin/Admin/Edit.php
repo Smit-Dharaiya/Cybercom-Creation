@@ -6,7 +6,6 @@ namespace Block\Admin\Admin;
 
 class Edit extends \Block\Core\Edit
 {
-
 	function __construct()
 	{
 		parent::__construct();

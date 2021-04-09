@@ -2,8 +2,6 @@
 
 namespace Controller\Admin;
 
-use Exception;
-
 \Mage::loadFileByClassName("Controller\Core\Admin");
 
 class Product extends \Controller\Core\Admin
@@ -16,7 +14,7 @@ class Product extends \Controller\Core\Admin
 
         $gridBlock = \Mage::getBlock("Block\Admin\Product\Grid");
 
-        $content = $layout->getChild('content');
+        $content = $layout->getContent();
         $content->addChild($gridBlock, 'grid');
 
         $this->toHtmlLayout();
@@ -72,11 +70,23 @@ class Product extends \Controller\Core\Admin
                     throw new \Exception("Record Not Found.");
                 }
             }
-            date_default_timezone_set("Asia/Calcutta");
-            $product->createdAt = date("Y-m-d H:i:s");
+            // date_default_timezone_set("Asia/Calcutta");
+            // $product->createdAt = date("Y-m-d H:i:s");
             $productData = $this->getRequest()->getPost('product');
-            $product->setData($productData);
+            $rv = array_filter($productData, 'is_array');
 
+            if (count($rv) > 0) {
+                foreach ($productData as $key => $value) {
+                    if (\is_array($value)) {
+                        $value = \implode(',', $value);
+                    }
+                    $productData[$key] = $value;
+                    $product->setData($productData);
+                }
+            } else {
+                $product->setData($productData);
+            }
+            // $product->setData($productData);
             if ($product->save()) {
                 $this->getMessage()->setSuccess("Record Added Successfully");
             } else {

@@ -32,7 +32,8 @@ $paymentMethod = $this->getTableRow();
                 <?php } ?>
             </select>
         </div>
-        <button name="submit" id="submit" class="btn btn-primary"><?php echo $this->getButton(); ?></button>
+        <a href="<?php echo $this->getUrlObject()->getUrl('grid'); ?>" name="back" id="back" class="btn btn-dark"><i class="fas fa-arrow-alt-circle-left fa=sm"></i> Back</a>
+        <button name="submit" id="submit" class="btn btn-primary mx-2"><?php echo $this->getButton(); ?></button>
         <br><br>
     </form>
 </div>

@@ -5,7 +5,7 @@
 
 <body>
 
-	<table border="1" width="100%">
+	<table width="100%">
 		<tbody>
 			<tr>
 				<td colspan="2" height="100px"><?php echo $this->getChild('header')->toHtml();  ?></td>

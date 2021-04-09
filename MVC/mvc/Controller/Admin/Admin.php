@@ -98,4 +98,17 @@ class Admin extends \Controller\Core\Admin
         }
         $this->redirect('grid');
     }
+
+    public function filterAction()
+    {
+        $data = $this->getRequest()->getPost('filter');
+        $this->getFilterObject()->setFilters($data);
+        $this->redirect('grid');
+    }
+
+    public function clearFilterAction()
+    {
+        $this->getFilterObject()->clearFilters('admin');
+        $this->redirect('grid');
+    }
 }

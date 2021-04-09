@@ -47,7 +47,6 @@ class OptionGrid extends \Block\Core\Edit
 		$query = "SELECT * FROM `{$options->getTableName()}`
         WHERE `attributeId` = {$id}
         ORDER BY `sortOrder` ASC";
-
 		$options = $options->fetchAll($query);
 		return $options;
 	}

@@ -21,4 +21,10 @@ class Form extends \Block\Core\Edit
 			echo 'Add';
 		}
 	}
+
+	public function getCustomerGroup()
+	{
+		$group = \Mage::getModel('Model\CustomerGroup')->fetchAll();
+		return $group;
+	}
 }

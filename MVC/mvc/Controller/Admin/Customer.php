@@ -62,7 +62,7 @@ class Customer extends \Controller\Core\Admin
 			$customerModel->load($customerId);
 
 			if ($customerId) {
-				if (!$customerModel->getData()) {
+				if (!$customerModel) {
 					throw new \Exception("No record found.");
 				}
 				$customerModel->updatedDate = date("Y-m-d H:i:s");
@@ -150,6 +150,19 @@ class Customer extends \Controller\Core\Admin
 		} catch (\Exception $e) {
 			echo $this->getMessage()->setFailure($e->getMessage());
 		}
+		$this->redirect('grid');
+	}
+
+	public function filterAction()
+	{
+		$data = $this->getRequest()->getPost('filter');
+		$this->getFilterObject()->setFilters($data);
+		$this->redirect('grid');
+	}
+
+	public function clearFilterAction()
+	{
+		$this->getFilterObject()->clearFilters('customer');
 		$this->redirect('grid');
 	}
 }

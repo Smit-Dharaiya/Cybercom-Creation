@@ -13,8 +13,9 @@
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'paymentmethod'); ?>">PaymentMethod</a>
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'shippingmethod'); ?>">ShippingMethod</a>
         <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'cmsPage'); ?>">CMS Page</a>
-        <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'attribute'); ?>">Attribute</a>
-        <!-- <a class="nav-link float-end" href="<?php// echo $this->getUrlObject()->getUrl('grid','admin'); ?>">Admin</a> -->
+        <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'attribute');
+                                            ?>">Attribute</a>
+        <a class="nav-link float-end" href="<?php echo $this->getUrlObject()->getUrl('grid', 'admin'); ?>">Admin</a>
       </div>
     </div>
   </div>

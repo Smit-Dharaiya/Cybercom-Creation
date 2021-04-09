@@ -80,11 +80,10 @@ class Grid extends \Block\Core\Grid
 		]);
 		$this->addColumns('updatedAt', [
 			'field' => 'updatedAt',
-			'label' => 'Modified Date',
+			'label' => 'Updated Date',
 			'type' => 'date',
 			'filter' => $this->getFilterObject()->getFilters($tableName, 'updatedAt'),
 		]);
-
 
 		return $this;
 	}
@@ -107,6 +106,11 @@ class Grid extends \Block\Core\Grid
 			'method' => 'getDeleteUrl',
 			'ajax' => false
 		]);
+		$this->addActions('addToCart', [
+			'label' => "<i class='fas fa-cart-plus'></i>",
+			'method' => 'getAddToCartUrl',
+			'ajax' => false
+		]);
 		return $this;
 	}
 
@@ -118,6 +122,11 @@ class Grid extends \Block\Core\Grid
 	public function getDeleteUrl($row)
 	{
 		return $this->getUrlObject()->getUrl('delete', null, ['id' => $row->id], true);
+	}
+
+	public function getAddToCartUrl($row)
+	{
+		return $this->getUrlObject()->getUrl('addToCart', 'cart', ['id' => $row->id], true);
 	}
 
 	public function prepareButtons()
@@ -134,7 +143,7 @@ class Grid extends \Block\Core\Grid
 		]);
 		if ($this->getFilterObject()->getFilters($this->getTableName()) != null) {
 			$this->addButtons('clearFilter', [
-				'label' => '<i class="fas fa-times-circle"></i> Clear Filters',
+				'label' => '<i class="fas fa-times-circle"> Clear Filters</i>',
 				'method' => 'getClearFilterAction',
 				'ajax' => false,
 			]);

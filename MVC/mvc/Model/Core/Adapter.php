@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Model\Core;
 
@@ -11,7 +11,7 @@ class Adapter
         'database' => 'project'
     ];
     private $connect = null;
-    
+
     function connection()
     {
         $connect = \mysqli_connect($this->config['host'], $this->config['user'], $this->config['password'], $this->config['database']);
@@ -20,7 +20,7 @@ class Adapter
 
     function getConnect()
     {
-        if(!$this->connect){
+        if (!$this->connect) {
             $this->connection();
         }
         return $this->connect;
@@ -47,7 +47,7 @@ class Adapter
         exit;
     }
 
-	function select($query)
+    function select($query)
     {
         if (!$this->isConnected()) {
             $this->connection();
@@ -55,15 +55,14 @@ class Adapter
         $result = $this->getConnect()->query($query);
         return $result;
     }
-    
+
     function insert($query)
     {
         if (!$this->isConnected()) {
             $this->connection();
         }
-        $result = $this->getConnect()->query($query) ;
-        
-        if($result){
+        $result = $this->getConnect()->query($query);
+        if ($result) {
             return $this->getConnect()->insert_id;
         }
         return $result;
@@ -71,7 +70,6 @@ class Adapter
 
     function update($query)
     {
- 
         if (!$this->isConnected()) {
             $this->connection();
         }
@@ -86,7 +84,7 @@ class Adapter
         }
         $result = $this->getConnect()->query($query);
         return $result;
-    } 
+    }
 
     function fetchRow($query)
     {
@@ -94,6 +92,9 @@ class Adapter
             $this->connection();
         }
         $result = $this->getConnect()->query($query);
+        if (!$result) {
+            return \false;
+        }
         $row = $result->fetch_array();
         if (!$row) {
             return false;
@@ -125,8 +126,31 @@ class Adapter
         if (!$rows) {
             return $rows;
         }
-        $columns = array_column($rows,'0');
-        $values = array_column($rows,'1');
+        $columns = array_column($rows, '0');
+        $values = array_column($rows, '1');
         return array_combine($columns, $values);
+    }
+
+    public function fetchOne($query)
+    {
+        if (!$this->isConnected()) {
+            $this->connection();
+        }
+        $result = $this->getConnect()->query($query);
+
+        return  $result->num_rows;
+    }
+
+    public function alterTable($query)
+    {
+        if (!$this->isConnected()) {
+            $this->connection();
+        }
+        $result = $this->getConnect()->query($query);
+
+        if (!$result) {
+            return \false;
+        }
+        return true;
     }
 }

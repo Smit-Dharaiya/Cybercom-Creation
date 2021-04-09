@@ -43,13 +43,6 @@ class Filter extends Session
 
     public function clearFilters($tableName = null)
     {
-        // $var = $this->filters;
-
-        // if ($tableName) {
-        //     unset($var[$tableName]);
-        //     $this->filters = $var;
-        //     return $this;
-        // }
         if ($tableName) {
             unset($_SESSION[$this->getNameSpace()]['filters'][$tableName]);
             return $this;

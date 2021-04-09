@@ -80,12 +80,10 @@ class Address extends \Block\Core\Edit
 
     public function getbutton()
     {
-        /*if($this->getCustomerAddress()){
+        if ($this->getCustomerAddress()) {
             echo 'Update';
+        } else {
+            echo 'Add';
         }
-        else{
-        */
-        echo 'Add';
-        // }
     }
 }
